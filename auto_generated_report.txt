@@ -1,0 +1,164 @@
+Artificial Intelligence and Knowledge Engineering
+Assignment 4 - Auto-Generated Report
+Katarzyna Fojcik, Joanna Szołomicka, Teddy Ferdinan
+March 7, 2025
+
+================================================================================
+
+1. Data Mining and Problem Definition
+   Dataset: cardiotocography_v2.csv
+   Dataset Shape (rows, columns): (2126, 22)
+
+   Dataset Info (`df.info()` output):
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 2126 entries, 0 to 2125
+Data columns (total 22 columns):
+ #   Column    Non-Null Count  Dtype  
+---  ------    --------------  -----  
+ 0   LB        2126 non-null   float64
+ 1   AC        2126 non-null   float64
+ 2   FM        2126 non-null   float64
+ 3   UC        2126 non-null   float64
+ 4   DL        2126 non-null   float64
+ 5   DS        2126 non-null   float64
+ 6   DP        2126 non-null   float64
+ 7   ASTV      2126 non-null   float64
+ 8   MSTV      2126 non-null   float64
+ 9   ALTV      2126 non-null   float64
+ 10  MLTV      2126 non-null   float64
+ 11  Width     2126 non-null   float64
+ 12  Min       2126 non-null   float64
+ 13  Max       2126 non-null   float64
+ 14  Nmax      2126 non-null   float64
+ 15  Nzeros    2126 non-null   float64
+ 16  Mode      2126 non-null   float64
+ 17  Mean      2126 non-null   float64
+ 18  Median    2126 non-null   float64
+ 19  Variance  2126 non-null   float64
+ 20  Tendency  2126 non-null   float64
+ 21  CLASS     2126 non-null   int64  
+dtypes: float64(21), int64(1)
+memory usage: 365.5 KB
+
+
+   Missing Values Before Imputation:
+     LB: 103
+     AC: 113
+     FM: 109
+     UC: 114
+     DL: 85
+     DS: 132
+     DP: 110
+     ASTV: 111
+     MSTV: 102
+     ALTV: 96
+     MLTV: 109
+     Width: 103
+     Min: 126
+     Max: 88
+     Nmax: 105
+     Nzeros: 124
+     Mode: 102
+     Mean: 107
+     Median: 101
+     Variance: 97
+     Tendency: 107
+   Total Missing Values After Imputation: 0
+
+   Descriptive Statistics (`df.describe()` output):
+                LB           AC           FM           UC           DL           DS           DP         ASTV         MSTV         ALTV         MLTV        Width          Min          Max         Nmax       Nzeros         Mode         Mean       Median     Variance     Tendency        CLASS
+count  2126.000000  2126.000000  2126.000000  2126.000000  2126.000000  2126.000000  2126.000000  2126.000000  2126.000000  2126.000000  2126.000000  2126.000000  2126.000000  2126.000000  2126.000000  2126.000000  2126.000000  2126.000000  2126.000000  2126.000000  2126.000000  2126.000000
+mean    133.263405     0.003087     0.008752     0.004417     0.001810     0.000003     0.000155    47.145343     1.325024     9.414393     8.167780    70.660865    93.387112   163.979304     4.086077     0.300094   137.432267   134.686736   138.305268    18.622295     0.302916     4.509878
+std       9.570998     0.003744     0.043927     0.002875     0.002918     0.000053     0.000586    16.761610     0.862486    18.113497     5.468712    38.102836    28.664505    17.640503     2.881605     0.665994    16.037071    15.213359    14.052488    28.737397     0.600753     3.026883
+min     106.000000     0.000000     0.000000     0.000000     0.000000     0.000000     0.000000    12.000000     0.200000     0.000000     0.000000     3.000000    50.000000   122.000000     0.000000     0.000000    60.000000    73.000000    77.000000     0.000000    -1.000000     1.000000
+25%     127.000000     0.000000     0.000000     0.002000     0.000000     0.000000     0.000000    33.000000     0.700000     0.000000     4.800000    38.000000    67.000000   152.000000     2.000000     0.000000   129.000000   125.000000   130.000000     2.000000     0.000000     2.000000
+50%     133.000000     0.002000     0.000000     0.005000     0.000000     0.000000     0.000000    49.000000     1.200000     0.000000     7.400000    68.000000    93.000000   162.000000     4.000000     0.000000   139.000000   136.000000   140.000000     8.000000     0.000000     4.000000
+75%     140.000000     0.005000     0.002000     0.006000     0.003000     0.000000     0.000000    61.000000     1.700000    10.000000    10.600000    99.000000   119.000000   174.000000     6.000000     0.000000   147.000000   145.000000   148.000000    23.000000     1.000000     7.000000
+max     160.000000     0.018000     0.481000     0.015000     0.015000     0.001000     0.005000    87.000000     7.000000    91.000000    50.700000   180.000000   159.000000   238.000000    18.000000    10.000000   187.000000   182.000000   186.000000   269.000000     1.000000    10.000000
+
+   Class Distribution (`CLASS` variable):
+CLASS
+1     384
+2     579
+3      53
+4      81
+5      72
+6     332
+7     252
+8     107
+9      69
+10    197
+   Comments on Features and Labels: [Bu kısmı, çıktılara dayanarak manuel olarak yorumlayın. Sınıf dengesizliği, özelliklerin ölçekleri vb.]
+
+================================================================================
+
+2. Data Preparation
+   Handling Missing Values Strategy: median imputation.
+   Data Splitting: 80% Training / 20% Validation. Stratified by target variable 'CLASS'.
+   Training set shape: (1700, 21) for X_train, (1700,) for y_train
+   Validation set shape: (426, 21) for X_val, (426,) for y_val
+   PCA: Applied on Standardized data. Reduced from 21 to 15 components (retaining 95% variance).
+   Data Processing Methods Compared: Raw (Imputed), Standardized, PCA (on Standardized).
+
+================================================================================
+
+3. Classification Results Summary
+   (Metrics: Accuracy, Precision (Macro), Recall (Macro), F1-Score (Macro))
+                     Model             Data Prep                                                                             Parameters  Accuracy  Precision (Macro)  Recall (Macro)  F1-Score (Macro)
+             Random Forest          Standardized      {'n_estimators': 100, 'max_depth': 10, 'random_state': 42, 'min_samples_leaf': 2}  0.830986           0.845222        0.707967          0.732770
+             Decision Tree          Standardized    {'criterion': 'gini', 'max_depth': None, 'min_samples_leaf': 5, 'random_state': 42}  0.776995           0.758009        0.691689          0.704522
+             Decision Tree         Raw (Imputed)    {'criterion': 'gini', 'max_depth': None, 'min_samples_leaf': 5, 'random_state': 42}  0.776995           0.757539        0.691689          0.704321
+             Decision Tree         Raw (Imputed)                          {'criterion': 'entropy', 'max_depth': 10, 'random_state': 42}  0.758216           0.774323        0.672911          0.696480
+             Decision Tree          Standardized                          {'criterion': 'entropy', 'max_depth': 10, 'random_state': 42}  0.758216           0.774323        0.672911          0.696480
+  DT (Deep - Overfit Test)          Standardized {'criterion': 'entropy', 'max_depth': None, 'min_samples_leaf': 1, 'random_state': 42}  0.760563           0.725094        0.664366          0.673170
+DT (Pruned - Overfit Test)          Standardized    {'criterion': 'entropy', 'max_depth': 5, 'min_samples_leaf': 5, 'random_state': 42}  0.744131           0.704720        0.640998          0.657241
+               Naive Bayes          Standardized                                                               {'var_smoothing': 1e-05}  0.676056           0.610345        0.672798          0.621134
+             Decision Tree PCA (on Standardized)                          {'criterion': 'entropy', 'max_depth': 10, 'random_state': 42}  0.645540           0.616550        0.628136          0.617753
+               Naive Bayes          Standardized                                                               {'var_smoothing': 1e-07}  0.619718           0.578092        0.642951          0.579256
+             Decision Tree         Raw (Imputed)                              {'criterion': 'gini', 'max_depth': 5, 'random_state': 42}  0.746479           0.586008        0.591388          0.576634
+             Decision Tree          Standardized                              {'criterion': 'gini', 'max_depth': 5, 'random_state': 42}  0.746479           0.586008        0.591388          0.576634
+               Naive Bayes PCA (on Standardized)                                                               {'var_smoothing': 1e-05}  0.612676           0.579814        0.563678          0.559728
+               Naive Bayes PCA (on Standardized)                                                               {'var_smoothing': 1e-07}  0.612676           0.579814        0.563678          0.559728
+               Naive Bayes PCA (on Standardized)                                                               {'var_smoothing': 1e-09}  0.612676           0.579814        0.563678          0.559728
+               Naive Bayes          Standardized                                                               {'var_smoothing': 1e-09}  0.589202           0.565904        0.620434          0.555926
+             Decision Tree PCA (on Standardized)    {'criterion': 'gini', 'max_depth': None, 'min_samples_leaf': 5, 'random_state': 42}  0.605634           0.509556        0.512280          0.506855
+               Naive Bayes         Raw (Imputed)                                                               {'var_smoothing': 1e-09}  0.525822           0.503308        0.593983          0.486444
+               Naive Bayes         Raw (Imputed)                                                               {'var_smoothing': 1e-05}  0.469484           0.443800        0.560573          0.465940
+               Naive Bayes         Raw (Imputed)                                                               {'var_smoothing': 1e-07}  0.446009           0.423567        0.563670          0.437035
+             Decision Tree PCA (on Standardized)                              {'criterion': 'gini', 'max_depth': 5, 'random_state': 42}  0.561033           0.518379        0.423085          0.432485
+
+   Interpretation of Results: [Bu tabloyu manuel olarak yorumlayın. Hangi model/hazırlık/hiperparametre en iyi sonucu verdi? Veri hazırlığının ve hiperparametrelerin etkisi ne oldu?]
+
+================================================================================
+
+4. Bonus - Advanced Algorithms
+   Random Forest Classifier:
+     Data Preparation: Standardized
+     Parameters: {'n_estimators': 100, 'max_depth': 10, 'random_state': 42, 'min_samples_leaf': 2}
+     Accuracy: 0.8310
+     F1-Score (Macro): 0.7328
+
+================================================================================
+
+5. Bonus - Overfitting Mitigation (Decision Tree Example)
+   Approach: Compared a deep Decision Tree (prone to overfitting) with a 'pruned' tree (controlled complexity) on Standardized data.
+   Overfit Tree (Parameters: {'criterion': 'entropy', 'max_depth': None, 'min_samples_leaf': 1, 'random_state': 42}):
+     Training Accuracy: 0.9988, Training F1 (Macro): 0.9984
+     Validation Accuracy: 0.7606, Validation F1 (Macro): 0.6732
+
+   Pruned Tree (Parameters: {'criterion': 'entropy', 'max_depth': 5, 'min_samples_leaf': 5, 'random_state': 42}):
+     Training Accuracy: 0.7724, Training F1 (Macro): 0.7093
+     Validation Accuracy: 0.7441, Validation F1 (Macro): 0.6572
+   Comparison and Comments: [Bu kısmı, çıktılara dayanarak manuel olarak yorumlayın. Overfitting belirtileri, budanmış ağacın genelleme yeteneği vb.]
+
+================================================================================
+
+6. Source Materials and Libraries
+   Dataset Source: Campos, D., & Bernardes, J. (2000). Cardiotocography. UCI Machine Learning Repository. https://doi.org/10.24432/C51S4N (Adapted for the laboratorium exercise).
+   Theoretical Concepts: Course lecture notes and provided assignment document.
+   Python Libraries Used: pandas, numpy, scikit-learn, matplotlib, seaborn, json.
+   [Eğer WEKA kullanıldıysa, WEKA adımlarını ve bulgularını buraya ekleyin.]
+
+================================================================================
+
+--- End of Auto-Generated Report ---

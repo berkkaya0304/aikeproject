@@ -1,0 +1,248 @@
+{
+    "data_file_name": "cardiotocography_v2.csv",
+    "dataset_shape": [
+        2126,
+        22
+    ],
+    "dataset_info_str": "<class 'pandas.core.frame.DataFrame'>\nRangeIndex: 2126 entries, 0 to 2125\nData columns (total 22 columns):\n #   Column    Non-Null Count  Dtype  \n---  ------    --------------  -----  \n 0   LB        2126 non-null   float64\n 1   AC        2126 non-null   float64\n 2   FM        2126 non-null   float64\n 3   UC        2126 non-null   float64\n 4   DL        2126 non-null   float64\n 5   DS        2126 non-null   float64\n 6   DP        2126 non-null   float64\n 7   ASTV      2126 non-null   float64\n 8   MSTV      2126 non-null   float64\n 9   ALTV      2126 non-null   float64\n 10  MLTV      2126 non-null   float64\n 11  Width     2126 non-null   float64\n 12  Min       2126 non-null   float64\n 13  Max       2126 non-null   float64\n 14  Nmax      2126 non-null   float64\n 15  Nzeros    2126 non-null   float64\n 16  Mode      2126 non-null   float64\n 17  Mean      2126 non-null   float64\n 18  Median    2126 non-null   float64\n 19  Variance  2126 non-null   float64\n 20  Tendency  2126 non-null   float64\n 21  CLASS     2126 non-null   int64  \ndtypes: float64(21), int64(1)\nmemory usage: 365.5 KB\n",
+    "missing_values_before_handling": {
+        "LB": 103,
+        "AC": 113,
+        "FM": 109,
+        "UC": 114,
+        "DL": 85,
+        "DS": 132,
+        "DP": 110,
+        "ASTV": 111,
+        "MSTV": 102,
+        "ALTV": 96,
+        "MLTV": 109,
+        "Width": 103,
+        "Min": 126,
+        "Max": 88,
+        "Nmax": 105,
+        "Nzeros": 124,
+        "Mode": 102,
+        "Mean": 107,
+        "Median": 101,
+        "Variance": 97,
+        "Tendency": 107
+    },
+    "total_missing_after_imputation": 0,
+    "descriptive_stats_str": "                LB           AC           FM           UC           DL           DS           DP         ASTV         MSTV         ALTV         MLTV        Width          Min          Max         Nmax       Nzeros         Mode         Mean       Median     Variance     Tendency        CLASS\ncount  2126.000000  2126.000000  2126.000000  2126.000000  2126.000000  2126.000000  2126.000000  2126.000000  2126.000000  2126.000000  2126.000000  2126.000000  2126.000000  2126.000000  2126.000000  2126.000000  2126.000000  2126.000000  2126.000000  2126.000000  2126.000000  2126.000000\nmean    133.263405     0.003087     0.008752     0.004417     0.001810     0.000003     0.000155    47.145343     1.325024     9.414393     8.167780    70.660865    93.387112   163.979304     4.086077     0.300094   137.432267   134.686736   138.305268    18.622295     0.302916     4.509878\nstd       9.570998     0.003744     0.043927     0.002875     0.002918     0.000053     0.000586    16.761610     0.862486    18.113497     5.468712    38.102836    28.664505    17.640503     2.881605     0.665994    16.037071    15.213359    14.052488    28.737397     0.600753     3.026883\nmin     106.000000     0.000000     0.000000     0.000000     0.000000     0.000000     0.000000    12.000000     0.200000     0.000000     0.000000     3.000000    50.000000   122.000000     0.000000     0.000000    60.000000    73.000000    77.000000     0.000000    -1.000000     1.000000\n25%     127.000000     0.000000     0.000000     0.002000     0.000000     0.000000     0.000000    33.000000     0.700000     0.000000     4.800000    38.000000    67.000000   152.000000     2.000000     0.000000   129.000000   125.000000   130.000000     2.000000     0.000000     2.000000\n50%     133.000000     0.002000     0.000000     0.005000     0.000000     0.000000     0.000000    49.000000     1.200000     0.000000     7.400000    68.000000    93.000000   162.000000     4.000000     0.000000   139.000000   136.000000   140.000000     8.000000     0.000000     4.000000\n75%     140.000000     0.005000     0.002000     0.006000     0.003000     0.000000     0.000000    61.000000     1.700000    10.000000    10.600000    99.000000   119.000000   174.000000     6.000000     0.000000   147.000000   145.000000   148.000000    23.000000     1.000000     7.000000\nmax     160.000000     0.018000     0.481000     0.015000     0.015000     0.001000     0.005000    87.000000     7.000000    91.000000    50.700000   180.000000   159.000000   238.000000    18.000000    10.000000   187.000000   182.000000   186.000000   269.000000     1.000000    10.000000",
+    "class_distribution_str": "CLASS\n1     384\n2     579\n3      53\n4      81\n5      72\n6     332\n7     252\n8     107\n9      69\n10    197",
+    "imputation_strategy": "median",
+    "test_set_size_ratio": 0.2,
+    "training_set_shape": [
+        1700,
+        21
+    ],
+    "validation_set_shape": [
+        426,
+        21
+    ],
+    "pca_original_features": 21,
+    "pca_reduced_features": 15,
+    "classification_results_list": [
+        {
+            "Model": "Naive Bayes",
+            "Data Prep": "Raw (Imputed)",
+            "Parameters": "{'var_smoothing': 1e-09}",
+            "Accuracy": 0.5258215962441315,
+            "Precision (Macro)": 0.503308079819236,
+            "Recall (Macro)": 0.5939825962236728,
+            "F1-Score (Macro)": 0.486444426182224
+        },
+        {
+            "Model": "Naive Bayes",
+            "Data Prep": "Raw (Imputed)",
+            "Parameters": "{'var_smoothing': 1e-07}",
+            "Accuracy": 0.4460093896713615,
+            "Precision (Macro)": 0.4235666786747796,
+            "Recall (Macro)": 0.563669892707577,
+            "F1-Score (Macro)": 0.43703468505059007
+        },
+        {
+            "Model": "Naive Bayes",
+            "Data Prep": "Raw (Imputed)",
+            "Parameters": "{'var_smoothing': 1e-05}",
+            "Accuracy": 0.4694835680751174,
+            "Precision (Macro)": 0.44380005332739075,
+            "Recall (Macro)": 0.5605728921356665,
+            "F1-Score (Macro)": 0.46593977471932374
+        },
+        {
+            "Model": "Naive Bayes",
+            "Data Prep": "Standardized",
+            "Parameters": "{'var_smoothing': 1e-09}",
+            "Accuracy": 0.5892018779342723,
+            "Precision (Macro)": 0.5659043132619478,
+            "Recall (Macro)": 0.620434133797338,
+            "F1-Score (Macro)": 0.5559261954409873
+        },
+        {
+            "Model": "Naive Bayes",
+            "Data Prep": "Standardized",
+            "Parameters": "{'var_smoothing': 1e-07}",
+            "Accuracy": 0.6197183098591549,
+            "Precision (Macro)": 0.5780921572144976,
+            "Recall (Macro)": 0.6429511578483378,
+            "F1-Score (Macro)": 0.5792561574044897
+        },
+        {
+            "Model": "Naive Bayes",
+            "Data Prep": "Standardized",
+            "Parameters": "{'var_smoothing': 1e-05}",
+            "Accuracy": 0.676056338028169,
+            "Precision (Macro)": 0.6103448271305414,
+            "Recall (Macro)": 0.672798333960954,
+            "F1-Score (Macro)": 0.6211335775885345
+        },
+        {
+            "Model": "Naive Bayes",
+            "Data Prep": "PCA (on Standardized)",
+            "Parameters": "{'var_smoothing': 1e-09}",
+            "Accuracy": 0.6126760563380281,
+            "Precision (Macro)": 0.5798139083139083,
+            "Recall (Macro)": 0.5636776952448216,
+            "F1-Score (Macro)": 0.5597284479063205
+        },
+        {
+            "Model": "Naive Bayes",
+            "Data Prep": "PCA (on Standardized)",
+            "Parameters": "{'var_smoothing': 1e-07}",
+            "Accuracy": 0.6126760563380281,
+            "Precision (Macro)": 0.5798139083139083,
+            "Recall (Macro)": 0.5636776952448216,
+            "F1-Score (Macro)": 0.5597284479063205
+        },
+        {
+            "Model": "Naive Bayes",
+            "Data Prep": "PCA (on Standardized)",
+            "Parameters": "{'var_smoothing': 1e-05}",
+            "Accuracy": 0.6126760563380281,
+            "Precision (Macro)": 0.5798139083139083,
+            "Recall (Macro)": 0.5636776952448216,
+            "F1-Score (Macro)": 0.5597284479063205
+        },
+        {
+            "Model": "Decision Tree",
+            "Data Prep": "Raw (Imputed)",
+            "Parameters": "{'criterion': 'gini', 'max_depth': 5, 'random_state': 42}",
+            "Accuracy": 0.7464788732394366,
+            "Precision (Macro)": 0.5860083100732815,
+            "Recall (Macro)": 0.5913884082852249,
+            "F1-Score (Macro)": 0.5766340432679378
+        },
+        {
+            "Model": "Decision Tree",
+            "Data Prep": "Raw (Imputed)",
+            "Parameters": "{'criterion': 'entropy', 'max_depth': 10, 'random_state': 42}",
+            "Accuracy": 0.7582159624413145,
+            "Precision (Macro)": 0.7743228137630325,
+            "Recall (Macro)": 0.67291059637435,
+            "F1-Score (Macro)": 0.6964799768846366
+        },
+        {
+            "Model": "Decision Tree",
+            "Data Prep": "Raw (Imputed)",
+            "Parameters": "{'criterion': 'gini', 'max_depth': None, 'min_samples_leaf': 5, 'random_state': 42}",
+            "Accuracy": 0.7769953051643192,
+            "Precision (Macro)": 0.7575386534068345,
+            "Recall (Macro)": 0.6916891630414532,
+            "F1-Score (Macro)": 0.7043209530144161
+        },
+        {
+            "Model": "Decision Tree",
+            "Data Prep": "Standardized",
+            "Parameters": "{'criterion': 'gini', 'max_depth': 5, 'random_state': 42}",
+            "Accuracy": 0.7464788732394366,
+            "Precision (Macro)": 0.5860083100732815,
+            "Recall (Macro)": 0.5913884082852249,
+            "F1-Score (Macro)": 0.5766340432679378
+        },
+        {
+            "Model": "Decision Tree",
+            "Data Prep": "Standardized",
+            "Parameters": "{'criterion': 'entropy', 'max_depth': 10, 'random_state': 42}",
+            "Accuracy": 0.7582159624413145,
+            "Precision (Macro)": 0.7743228137630325,
+            "Recall (Macro)": 0.67291059637435,
+            "F1-Score (Macro)": 0.6964799768846366
+        },
+        {
+            "Model": "Decision Tree",
+            "Data Prep": "Standardized",
+            "Parameters": "{'criterion': 'gini', 'max_depth': None, 'min_samples_leaf': 5, 'random_state': 42}",
+            "Accuracy": 0.7769953051643192,
+            "Precision (Macro)": 0.7580093023507658,
+            "Recall (Macro)": 0.6916891630414532,
+            "F1-Score (Macro)": 0.704522313623247
+        },
+        {
+            "Model": "Decision Tree",
+            "Data Prep": "PCA (on Standardized)",
+            "Parameters": "{'criterion': 'gini', 'max_depth': 5, 'random_state': 42}",
+            "Accuracy": 0.5610328638497653,
+            "Precision (Macro)": 0.5183790480636894,
+            "Recall (Macro)": 0.42308516239293387,
+            "F1-Score (Macro)": 0.4324852283611433
+        },
+        {
+            "Model": "Decision Tree",
+            "Data Prep": "PCA (on Standardized)",
+            "Parameters": "{'criterion': 'entropy', 'max_depth': 10, 'random_state': 42}",
+            "Accuracy": 0.6455399061032864,
+            "Precision (Macro)": 0.616549528790635,
+            "Recall (Macro)": 0.6281364415306772,
+            "F1-Score (Macro)": 0.6177526386968959
+        },
+        {
+            "Model": "Decision Tree",
+            "Data Prep": "PCA (on Standardized)",
+            "Parameters": "{'criterion': 'gini', 'max_depth': None, 'min_samples_leaf': 5, 'random_state': 42}",
+            "Accuracy": 0.6056338028169014,
+            "Precision (Macro)": 0.5095562891823395,
+            "Recall (Macro)": 0.5122798204666374,
+            "F1-Score (Macro)": 0.5068551647917439
+        },
+        {
+            "Model": "Random Forest",
+            "Data Prep": "Standardized",
+            "Parameters": "{'n_estimators': 100, 'max_depth': 10, 'random_state': 42, 'min_samples_leaf': 2}",
+            "Accuracy": 0.8309859154929577,
+            "Precision (Macro)": 0.8452223040935619,
+            "Recall (Macro)": 0.7079667852154305,
+            "F1-Score (Macro)": 0.7327696652903231
+        },
+        {
+            "Model": "DT (Deep - Overfit Test)",
+            "Data Prep": "Standardized",
+            "Parameters": "{'criterion': 'entropy', 'max_depth': None, 'min_samples_leaf': 1, 'random_state': 42}",
+            "Accuracy": 0.7605633802816901,
+            "Precision (Macro)": 0.7250937108773194,
+            "Recall (Macro)": 0.6643660466716839,
+            "F1-Score (Macro)": 0.6731699336055837
+        },
+        {
+            "Model": "DT (Pruned - Overfit Test)",
+            "Data Prep": "Standardized",
+            "Parameters": "{'criterion': 'entropy', 'max_depth': 5, 'min_samples_leaf': 5, 'random_state': 42}",
+            "Accuracy": 0.744131455399061,
+            "Precision (Macro)": 0.7047200657924407,
+            "Recall (Macro)": 0.6409982094036467,
+            "F1-Score (Macro)": 0.6572407413179916
+        }
+    ],
+    "overfitting_deep_params_str": "{'criterion': 'entropy', 'max_depth': None, 'min_samples_leaf': 1, 'random_state': 42}",
+    "overfitting_deep_train_acc": 0.9988235294117647,
+    "overfitting_deep_val_acc": 0.7605633802816901,
+    "overfitting_deep_train_f1": 0.9983896884046338,
+    "overfitting_deep_val_f1": 0.6731699336055837,
+    "overfitting_pruned_params_str": "{'criterion': 'entropy', 'max_depth': 5, 'min_samples_leaf': 5, 'random_state': 42}",
+    "overfitting_pruned_train_acc": 0.7723529411764706,
+    "overfitting_pruned_val_acc": 0.744131455399061,
+    "overfitting_pruned_train_f1": 0.7093112031464847,
+    "overfitting_pruned_val_f1": 0.6572407413179916,
+    "random_forest_params_str": "{'n_estimators': 100, 'max_depth': 10, 'random_state': 42, 'min_samples_leaf': 2}"
+}
