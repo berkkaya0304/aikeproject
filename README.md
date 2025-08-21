@@ -75,7 +75,7 @@ streamlit run lab4.py
 - seaborn
 
 ## 📁 Project Structure
-aikeproject/
+fetal-heart-rate-classifier/
 ├── lab4.py # Main Streamlit application
 ├── cardiotocography_v2.csv # Dataset file
 ├── ml_report_data.json # Detailed ML results and metrics
