@@ -154,10 +154,8 @@ This project demonstrates:
 - **Libraries**: scikit-learn, pandas, numpy, matplotlib, seaborn, streamlit
 - **Course**: Artificial Intelligence and Knowledge Engineering - Lab 4
 
-## 👥 Contributors
+## 👥 Academical Support
 
-- Katarzyna Fojcik
-- Joanna Szołomicka  
 - Teddy Ferdinan
 
 ## 📝 License
